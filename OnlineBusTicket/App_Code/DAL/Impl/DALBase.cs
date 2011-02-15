@@ -279,5 +279,32 @@ namespace DAL
             }
             return resultList.ToArray();
         }
+        protected static DataTable getAllData(String tableName)
+        {
+            DataTable dt = new DataTable(tableName);
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            {
+                connection.Open();
+                SqlCommand cmd = connection.CreateCommand();
+                cmd.CommandText = String.Format("SELECT * FROM {0}", tableName);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+        protected static DataTable getAllDataByStatus(String tableName,Boolean status)
+        {
+            DataTable dt = new DataTable(tableName);
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            {
+                connection.Open();
+                SqlCommand cmd = connection.CreateCommand();
+                cmd.CommandText = String.Format("SELECT * FROM {0} WHERE Status = @status", tableName);
+                cmd.Parameters.AddWithValue("@status", status);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
     }
 }

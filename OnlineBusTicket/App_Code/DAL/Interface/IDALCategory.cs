@@ -21,7 +21,9 @@ namespace DAL
         int InsertCategory(Category category);
         int UpdateCategory(Category category);
         int DeleteCategory(int id);
-        Category[] GetAllCategoryByID(int id);
-
+        Category[] getCategoryByID(int id);
+        DataTable getAllData();
+        DataTable getAllDataByStatus(Boolean status);
+        int checkCategoryExistName(String name);
     }
 }
