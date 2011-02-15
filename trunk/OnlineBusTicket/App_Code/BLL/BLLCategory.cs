@@ -68,11 +68,47 @@ namespace BLL
             return result;
         }
 
-        public static Category[] GetAllCategoryByID(int id)
+        public static Category[] getCategoryByID(int id)
         {
             try
             {
-                return DataAccessHelper.GetCategoryDA().GetAllCategoryByID(id);
+                return DataAccessHelper.GetCategoryDA().getCategoryByID(id);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static DataTable getAllDataByStatus(Boolean status)
+        {
+            try
+            {
+                return DataAccessHelper.GetCategoryDA().getAllDataByStatus(status);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static DataTable getAllData()
+        {
+            try
+            {
+                return DataAccessHelper.GetCategoryDA().getAllData();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static int checkCategoryExistName(String name)
+        {
+            try
+            {
+                return DataAccessHelper.GetCategoryDA().checkCategoryExistName(name);
             }
             catch (Exception ex)
             {

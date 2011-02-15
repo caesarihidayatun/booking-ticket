@@ -79,14 +79,14 @@ namespace DAL
             return result;
         }
 
-        public Category[] GetAllCategoryByID(int id)
+        public Category[] getCategoryByID(int id)
         {
             Category[] result = null;
             try
             {
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = String.Format("Select * from Customers where {0} = @{1}", categoryId, categoryId);
+                cmd.CommandText = String.Format("Select * from Category where {0} = @{1}", categoryId, categoryId);
                 cmd.Parameters.Add(String.Format("@{0}", categoryId), SqlDbType.Int).Value = id;
                 String[] columnNames = { categoryId, categoryName, status};
                 result = SelectCollection<Category>(columnNames, columnNames, cmd);
@@ -97,6 +97,42 @@ namespace DAL
                 throw ex;
             }
             return result;
+        }
+
+        public DataTable getAllData()
+        {
+            try
+            {
+                return DALBase.getAllData(tableName);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public DataTable getAllDataByStatus(Boolean status)
+        {
+            try
+            {
+                return DALBase.getAllDataByStatus(tableName, status);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public int checkCategoryExistName(String name) 
+        {
+            try
+            {
+                return RecordExisted(tableName, categoryName, name);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }
