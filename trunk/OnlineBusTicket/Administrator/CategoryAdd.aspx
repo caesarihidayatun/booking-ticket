@@ -18,6 +18,8 @@
 			<h1 style="background-image:url(Image/review.png);">Category: [New]</h1>
 			<div class="buttons">
                 <asp:LinkButton ID="lnkBtnSave" runat="server" CssClass="button" OnClick="lnkBtnSave_Click"><span>Save</span></asp:LinkButton>
+                <asp:LinkButton ID="LnkReset" runat="server" CssClass="button" 
+                    onclick="LnkReset_Click"><span>Reset</span></asp:LinkButton>
                 <asp:LinkButton ID="lnkCancel" runat="server" CssClass="button" PostBackUrl="CategoryList.aspx" CausesValidation="False"><span>Cancel</span></asp:LinkButton>
 			</div>
 		</div>
