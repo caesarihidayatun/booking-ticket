@@ -21,8 +21,8 @@ public partial class Admin_Controls_Menu : System.Web.UI.UserControl
 	                    "<li id='dashboard><a href='../Administrator/Default.aspx' class='top'>Home</a></li>"+
 	                    "<li id='catalog'><a class='top'>Catalog</a>"+
 		                    "<ul style='display: none; visibility: hidden;'>"+
-			                    "<li><a href='../Administrator/CategoryList.aspx'>Categories</a></li>"+
-			                    "<li><a href='../Administrator/BusTypeList.aspx'>Bus Type</a></li>"+
+			                    "<li><a href='../Administrator/CategoryList.aspx'>Category</a></li>"+
+			                    "<li><a href='../Administrator/BustypeList.aspx'>Bus Type</a></li>"+
 			                    "<li><a href='../Administrator/BusList.aspx'>Bus</a></li>"+
 			                    "<li><a href='../Administrator/PlaceList.aspx'>Place</a></li>"+
                                 "<li><a href='../Administrator/TicketReturnList.aspx'>Ticket Return</a></li>" +

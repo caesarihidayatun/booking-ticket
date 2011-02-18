@@ -26,6 +26,41 @@ namespace DAL
             }
             return d;
         }
-      
+
+        public static IDALBusType GetBusTypeDA()
+        {
+            IDALBusType d = null;
+            if (String.IsNullOrEmpty(dataAccessStringType))
+            {
+                throw (new NullReferenceException("DataAccessType in Web.config is null or empty"));
+            }
+            else
+            {
+                if (dataAccessStringType.Equals("SQLSERVER"))
+                {
+                    Type t = Type.GetType("DAL.DALBusType");
+                    d = (DALBusType)Activator.CreateInstance(t);
+                }
+            }
+            return d;
+        }
+
+        public static IDALBus GetBusDA()
+        {
+            IDALBus d = null;
+            if (String.IsNullOrEmpty(dataAccessStringType))
+            {
+                throw (new NullReferenceException("DataAccessType in Web.config is null or empty"));
+            }
+            else
+            {
+                if (dataAccessStringType.Equals("SQLSERVER"))
+                {
+                    Type t = Type.GetType("DAL.DALBus");
+                    d = (DALBus)Activator.CreateInstance(t);
+                }
+            }
+            return d;
+        }
     }
 }
