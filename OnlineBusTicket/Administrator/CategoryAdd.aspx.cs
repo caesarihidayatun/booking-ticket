@@ -34,5 +34,10 @@ public partial class Administrator_CategoryAdd : System.Web.UI.Page
             Response.Redirect("CategoryList.aspx");
         }
     }
+
+    protected void LnkReset_Click(object sender, EventArgs e)
+    {
+        CategoryName.Text = "";
+    }
     
 }
