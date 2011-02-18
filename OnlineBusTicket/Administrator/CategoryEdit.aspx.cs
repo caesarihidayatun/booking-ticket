@@ -46,4 +46,9 @@ public partial class Administrator_CategoryEdit : System.Web.UI.Page
             Response.Redirect("CategoryList.aspx");
         }
     }
+    protected void LnkReset_Click(object sender, EventArgs e)
+    {
+        CategoryName.Text = category.CategoryName;
+        cbStatus.Checked = category.Status;
+    }
 }

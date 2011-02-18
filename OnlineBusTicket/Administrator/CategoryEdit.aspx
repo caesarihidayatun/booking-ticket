@@ -8,7 +8,7 @@
 		<asp:HyperLink ID="lnkHome" runat="server" 
             NavigateUrl="~/Administrator/Default.aspx">Home</asp:HyperLink> :: 
         <asp:HyperLink ID="hlkCategory" runat="server" 
-            NavigateUrl="~/Administrator/CategoryList.aspx">Categories</asp:HyperLink>
+            NavigateUrl="~/Administrator/CategoryList.aspx">Category</asp:HyperLink>
 	</div>
 	<!-- /breadcrumb -->
     <div class="box">
@@ -18,6 +18,8 @@
 			<h1 style="background-image:url(Image/review.png);">Category: [Edit]</h1> 
 			<div class="buttons">
                 <asp:LinkButton ID="lnkBtnUpdate" runat="server" CssClass="button" OnClick="lnkUpdate_Click"><span>Update</span></asp:LinkButton>
+                <asp:LinkButton ID="LnkReset" runat="server" CssClass="button" 
+                    onclick="LnkReset_Click"><span>Reset</span></asp:LinkButton>
                 <asp:LinkButton ID="lnkCancel" runat="server" CssClass="button" PostBackUrl="CategoryList.aspx"><span>Cancel</span></asp:LinkButton>
 			</div>
 		</div>
