@@ -21,12 +21,11 @@ GO
 --CREATE TABLE BUS---------------------------------------------------------------------------------------------------------
 --Store information buses--
 CREATE TABLE Bus(
-	BusID int IDENTITY(1,1) PRIMARY KEY,
-	BusName nvarchar(50) NOT NULL,
-	BusPlate nvarchar(50) NOT NULL,
-	Seat int NOT NULL,
+	BusPlate nvarchar(50) PRIMARY KEY,
 	BusTypeID int NOT NULL,
 	CategoryID int NOT NULL,
+	BusName nvarchar(50) NOT NULL,
+	Seat int NOT NULL,
 	Status bit
 )
 GO
@@ -60,7 +59,7 @@ GO
 CREATE TABLE ListBus(
 	ListBusID int IDENTITY(1,1) PRIMARY KEY,
 	RouterID int NOT NULL,
-	BusID int NOT NULL,
+	BusPlate nvarchar(50) NOT NULL,
 	DepartureDate datetime NOT NULL,
 	DepartureTime nvarchar(50) NOT NULL,
 	Price float NOT NULL,
@@ -75,7 +74,7 @@ ON UPDATE CASCADE
 GO
 ALTER TABLE ListBus
 ADD CONSTRAINT fk_ListBus_Bus
-FOREIGN KEY (BusID) REFERENCES Bus(BusID)
+FOREIGN KEY (BusPlate) REFERENCES Bus(BusPlate)
 ON DELETE CASCADE
 ON UPDATE CASCADE
 GO
@@ -184,12 +183,12 @@ INSERT INTO BusType([Type],Status) VALUES ('Luxury','True')
 INSERT INTO BusType([Type],Status) VALUES ('Express','True')
 GO
 --BUS--
-INSERT INTO Bus VALUES ('01','30B - 4557','42','1','1','True')
-INSERT INTO Bus VALUES ('02','30H - 4444','39','5','1','True')
-INSERT INTO Bus VALUES ('03','30L - 3144','40','3','2','True')
-INSERT INTO Bus VALUES ('04','30L - 3145','24','2','2','True')
-INSERT INTO Bus VALUES ('05','16H - 1102','16','4','3','True')
-INSERT INTO Bus VALUES ('06','16M - 9999','34','3','3','True')
+INSERT INTO Bus VALUES ('30B - 4557','1','1','01','42','True');
+INSERT INTO Bus VALUES ('30H - 4444','5','1','02','39','True');
+INSERT INTO Bus VALUES ('30L - 3144','3','2','03','40','True')
+INSERT INTO Bus VALUES ('30L - 3145','2','2','04','24','True')
+INSERT INTO Bus VALUES ('16H - 1102','4','3','05','16','True')
+INSERT INTO Bus VALUES ('16M - 9999','3','3','06','34','True')
 GO
 --ROUTER--
 INSERT INTO Router VALUES ('Ha Noi - Bac Giang','Ha Noi','Bac Giang','60','Interprovincial',dateadd(dd,-30,getdate()),'True')
@@ -200,12 +199,12 @@ INSERT INTO Router VALUES ('Hai Phong - Thai Nguyen','Hai Phong','Thai Nguyen','
 INSERT INTO Router VALUES ('Hai Phong - Nam Dinh','Hai Phong','Nam Dinh','75','Interprovincial',dateadd(dd,-30,getdate()),'True')
 GO
 --LISTBUS--
-INSERT INTO ListBus VALUES ('1','1',getdate(),'07:00 PM','60','True')
-INSERT INTO ListBus VALUES ('2','2',getdate(),'07:00 AM','100','True')
-INSERT INTO ListBus VALUES ('3','3',getdate(),'09:00 AM','95','True')
-INSERT INTO ListBus VALUES ('4','4',getdate(),'08:00 AM','75','True')
-INSERT INTO ListBus VALUES ('5','5',getdate(),'06:00 AM','150','True')
-INSERT INTO ListBus VALUES ('6','6',getdate(),'09:00 AM','55','True')
+INSERT INTO ListBus VALUES ('1','30B - 4557',getdate(),'07:00 PM','60','True')
+INSERT INTO ListBus VALUES ('2','30H - 4444',getdate(),'07:00 AM','100','True')
+INSERT INTO ListBus VALUES ('3','30L - 3144',getdate(),'09:00 AM','95','True')
+INSERT INTO ListBus VALUES ('4','30L - 3145',getdate(),'08:00 AM','75','True')
+INSERT INTO ListBus VALUES ('5','16H - 1102',getdate(),'06:00 AM','150','True')
+INSERT INTO ListBus VALUES ('6','16M - 9999',getdate(),'09:00 AM','55','True')
 GO
 --PROMOTE--
 INSERT INTO Promote VALUES ('Under five old','100','True')
