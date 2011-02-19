@@ -40,22 +40,22 @@ public partial class Administrator_BusList : System.Web.UI.Page
 
     protected void lnkDelete_Click(object sender, EventArgs e)
     {
-        //int test = 0;
-        //foreach (GridViewRow row in gvBusList.Rows)
-        //{
-            
-        //    CheckBox cb = (CheckBox)row.FindControl("chkSel");
-        //    if (cb.Checked)
-        //    {
-        //        ++test;
-        //            int id = int.Parse(row.Cells[1].Text);
-        //        int k = BLLBus.DeleteBus(id);
-        //    }
-        //}
-        //if(test==0)
-        //    ClientScript.RegisterStartupScript(this.GetType(), "Notify", "alert('!!!Please select a Bus from the list to delete');", true);
-        //else
-        //    Response.Redirect("BusList.aspx");
+        int test = 0;
+        foreach (GridViewRow row in gvBusList.Rows)
+        {
+
+            CheckBox cb = (CheckBox)row.FindControl("chkSel");
+            if (cb.Checked)
+            {
+                ++test;
+                string id = row.Cells[2].Text;
+                int k = BLLBus.DeleteBus(id);
+            }
+        }
+        if (test == 0)
+            ClientScript.RegisterStartupScript(this.GetType(), "Notify", "alert('!!!Please select a Bus from the list to delete');", true);
+        else
+            Response.Redirect("BusList.aspx");
 
     }
 
