@@ -109,11 +109,12 @@ CREATE TABLE Account(
 	UserName nvarchar(50) NOT NULL,
 	Password nvarchar(50) NOT NULL,
 	[Role] nvarchar(50) NOT NULL,
-	Address nvarchar(MAX),
-	Qualification nvarchar(MAX),
 	Birthday datetime NOT NULL,
-	Phone varchar(50),
+	Sex nvarchar(50),
+	IdentifyCode nvarchar(50),
 	FullName nvarchar(50),
+	Address nvarchar(MAX),
+	Phone varchar(50),
 	Email nvarchar(50),
 	Status bit
 )
@@ -213,8 +214,8 @@ INSERT INTO Promote VALUES ('Twelve to fifty years old','0','True')
 INSERT INTO Promote VALUES ('More than 50 years old','30','True')
 GO
 --ACCOUNT--
-INSERT INTO Account VALUES ('tuyendn','abc12345','Admin','Hai Ba Trung, Ha Noi','Student','12/29/1987','0985943948','Tuyen Dang','dangngoctuyen@gmail.com','True')
-INSERT INTO Account VALUES ('hoannk','abc12345','Admin','Cau Giay, Ha Noi','Student','07/30/1986','0988888888','Nguyen Khai Hoan','hoannk307@gmail.com','True')
+INSERT INTO Account VALUES ('tuyendn','abc12345','Admin','12/29/1987','Male','121772846','Tuyen Dang','Hai Ba Trung, Ha Noi','0985943948','dangngoctuyen@gmail.com','True')
+INSERT INTO Account VALUES ('hoannk','abc12345','Admin','07/30/1986','Male','121884566','Hoan Nguyen','Cau Giay, Ha Noi','0988888888','hoannk307@gmail.com','True')
 GO
 --PLACE--
 INSERT INTO Place VALUES ('Bac Giang')

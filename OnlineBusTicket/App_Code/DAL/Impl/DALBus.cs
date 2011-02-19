@@ -18,7 +18,6 @@ namespace DAL
     public class DALBus : DALBase, IDALBus
     {
         private const string tableName = "Bus";
-        private const string busID = "BusID";
         private const string busName = "BusName";
         private const string busPlate = "BusPlate";
         private const string seat = "Seat";
@@ -38,8 +37,8 @@ namespace DAL
             int result = 0;
             try
             {
-                String[] columns = {busName, busPlate, seat, busTypeID, categoryID, status};
-                Object[] values = {bus.BusName, bus.BusPlate, bus.Seat, bus.BusTypeID, bus.CategoryID, bus.Status};
+                String[] columns = { busPlate, busName, seat, busTypeID, categoryID, status };
+                Object[] values = {bus.BusPlate, bus.BusName, bus.Seat, bus.BusTypeID, bus.CategoryID, bus.Status};
                 result = DALBase.InsertTable(tableName, columns, values) ;
             }
             catch (Exception ex)
@@ -49,13 +48,13 @@ namespace DAL
             return result;
         }
 
-        public int DeleteBus(int id)
+        public int DeleteBus(String key)
         {
             int result = 0;
             try
             {
-                String[] keyColumnNames = {busID};
-                Object[] keyColumnValues = {id};
+                String[] keyColumnNames = {busPlate};
+                Object[] keyColumnValues = {key};
                 result = DALBase.DeleteTable(tableName, keyColumnNames, keyColumnValues);
             }
             catch (Exception ex)
@@ -71,10 +70,10 @@ namespace DAL
             int result = 0;
             try
             {
-                String[] columnNames = { busName, busPlate, seat, busTypeID, categoryID, status };
-                Object[] values = { bus.BusName, bus.BusPlate, bus.Seat, bus.BusTypeID, bus.CategoryID, bus.Status };
-                String[] keyColumnNames = {busID};
-                Object[] keyColumnValues = {bus.BusID};
+                String[] columnNames = { busName, seat, busTypeID, categoryID, status };
+                Object[] values = { bus.BusName, bus.Seat, bus.BusTypeID, bus.CategoryID, bus.Status };
+                String[] keyColumnNames = { busPlate };
+                Object[] keyColumnValues = {bus.BusPlate};
                 result = DALBase.UpdateTable(tableName, columnNames, values, keyColumnNames, keyColumnValues);
             }
             catch (Exception ex)
@@ -84,16 +83,16 @@ namespace DAL
             return result;
         }
 
-        public Bus[] getBusByID(int id)
+        public Bus[] getBusByID(String id)
         {
             Bus[] result = null;
             try
             {
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = String.Format("Select * from Bus where {0} = @{1}", busID, busID);
-                cmd.Parameters.Add(String.Format("@{0}", busID), SqlDbType.Int).Value = id;
-                String[] columnNames = { busID, busName, busPlate, seat, busTypeID, categoryID, status };
+                cmd.CommandText = String.Format("Select * from Bus where {0} = @{1}", busPlate, busPlate);
+                cmd.Parameters.Add(String.Format("@{0}", busPlate), SqlDbType.NVarChar).Value = id;
+                String[] columnNames = {busName, busPlate, seat, busTypeID, categoryID, status };
                 result = SelectCollection<Bus>(columnNames, columnNames, cmd);
 
             }
@@ -121,6 +120,18 @@ namespace DAL
             try
             {
                 return DALBase.getAllDataByStatus(tableName, status);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public int checkBusPlateExist(String name)
+        {
+            try
+            {
+                return RecordExisted(tableName, busPlate, name);
             }
             catch (Exception ex)
             {

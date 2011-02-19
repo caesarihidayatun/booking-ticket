@@ -20,9 +20,10 @@ namespace DAL
     {
         int InsertBus(Bus bus);
         int UpdateBus(Bus bus);
-        int DeleteBus(int id);
-        Bus[] getBusByID(int id);
+        int DeleteBus(String key);
+        Bus[] getBusByID(String id);
         DataTable getAllBus();
         DataTable getAllBusByStatus(Boolean status);
+        int checkBusPlateExist(String name);
     }
 }
