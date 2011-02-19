@@ -12,64 +12,70 @@ using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
 using BLL;
 
-public partial class Administrator_BusAdd : System.Web.UI.Page
+public partial class Administrator_BusEdit : System.Web.UI.Page
 {
+    private static string busPlate;
+    private static Bus bus;
+
     protected void Page_Load(object sender, EventArgs e)
     {
+        busPlate = Request.QueryString["BusPlate"].ToString();
+        bus = BLLBus.getBusByID(busPlate)[0];
         if (!IsPostBack)
         {
-            fillData();
+            FillData();
         }
     }
-
     /// <summary>
-    /// Fill data to dropdownlist
+    /// Fill data to Form
     /// </summary>
-    private void fillData()
+    private void FillData()
     {
+        BusPlate.Text = bus.BusPlate;
+        BusName.Text = bus.BusName;
+        Seat.Text = bus.Seat.ToString();
+        cbStatus.Checked = bus.Status;
+
         DataTable busType = BLLBusType.getAllBusTypeByStatus(true);
         ddlBusType.DataSource = busType;
         ddlBusType.DataTextField = "Type";
         ddlBusType.DataValueField = "BusTypeID";
         ddlBusType.DataBind();
+        ddlBusType.SelectedValue = bus.BusTypeID.ToString();
+
         DataTable category = BLLCategory.getAllDataByStatus(true);
         ddlCategory.DataSource = category;
         ddlCategory.DataTextField = "CategoryName";
         ddlCategory.DataValueField = "CategoryID";
         ddlCategory.DataBind();
+        ddlCategory.SelectedValue = bus.CategoryID.ToString();
     }
-    protected void lnkBtnSave_Click(object sender, EventArgs e)
+
+    protected void lnkBtnUpdate_Click(object sender, EventArgs e)
     {
-        string busPlate = BusPlate.Text;
         string busName = BusName.Text;
         string seat = Seat.Text;
         string busTypeId = ddlBusType.SelectedValue.ToString();
         string categoryID = ddlCategory.SelectedValue.ToString();
 
-        if (BLLBus.checkBusPlateExist(busPlate) != 0)
-        {
-            ClientScript.RegisterStartupScript(this.GetType(), "Notify", "alert('!!!Bus Plate existed. Please try again');", true);
-        }
+        Bus newBus = new Bus();
+        newBus.BusPlate = bus.BusPlate;
+        newBus.BusName = busName;
+        newBus.Seat = Int32.Parse(seat);
+        newBus.BusTypeID = Int32.Parse(busTypeId);
+        newBus.CategoryID = Int32.Parse(categoryID);
+        if (cbStatus.Checked)
+            newBus.Status = true;
         else
-        {
-            Bus bus = new Bus();
-            bus.BusPlate = busPlate;
-            bus.BusName = busName;
-            bus.Seat = Int32.Parse(seat);
-            bus.BusTypeID = Int32.Parse(busTypeId);
-            bus.CategoryID = Int32.Parse(categoryID);
-            bus.Status = true;
-            BLLBus.InsertBus(bus);
-            Response.Redirect("BusList.aspx");
-        }
+            newBus.Status = false;
+        BLLBus.UpdateBus(newBus);
+        Response.Redirect("BusList.aspx");
+      
     }
 
     protected void LnkReset_Click(object sender, EventArgs e)
     {
-        BusPlate.Text = "";
-        BusName.Text = "";
-        Seat.Text = "";
-        fillData();
+        FillData();
     }
     
 }

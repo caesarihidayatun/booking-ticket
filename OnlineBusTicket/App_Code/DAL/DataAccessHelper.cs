@@ -62,5 +62,41 @@ namespace DAL
             }
             return d;
         }
+
+        public static IDALPlace GetPlaceDA()
+        {
+            IDALPlace d = null;
+            if (String.IsNullOrEmpty(dataAccessStringType))
+            {
+                throw (new NullReferenceException("DataAccessType in Web.config is null or empty"));
+            }
+            else
+            {
+                if (dataAccessStringType.Equals("SQLSERVER"))
+                {
+                    Type t = Type.GetType("DAL.DALPlace");
+                    d = (DALPlace)Activator.CreateInstance(t);
+                }
+            }
+            return d;
+        }
+
+        public static IDALPromote GetPromoteDA()
+        {
+            IDALPromote d = null;
+            if (String.IsNullOrEmpty(dataAccessStringType))
+            {
+                throw (new NullReferenceException("DataAccessType in Web.config is null or empty"));
+            }
+            else
+            {
+                if (dataAccessStringType.Equals("SQLSERVER"))
+                {
+                    Type t = Type.GetType("DAL.DALPromote");
+                    d = (DALPromote)Activator.CreateInstance(t);
+                }
+            }
+            return d;
+        }
     }
 }
