@@ -54,7 +54,7 @@ namespace BLL
             return result;
         }
 
-        public static int DeleteBus(int id)
+        public static int DeleteBus(String id)
         {
             int result = 0;
             try
@@ -68,7 +68,7 @@ namespace BLL
             return result;
         }
 
-        public static Bus[] getBusByID(int id)
+        public static Bus[] getBusByID(String id)
         {
             try
             {
@@ -103,6 +103,17 @@ namespace BLL
                 throw ex;
             }
         }
-        
+
+        public static int checkBusPlateExist(String name)
+        {
+            try
+            {
+                return DataAccessHelper.GetBusDA().checkBusPlateExist(name);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

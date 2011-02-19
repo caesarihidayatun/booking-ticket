@@ -16,7 +16,6 @@ using System.Xml.Linq;
 public class Bus
 {
 
-    private int busID;
     private string busName;
     private string busPlate;
     private int seat;
@@ -30,12 +29,6 @@ public class Bus
 		// TODO: Add constructor logic here
 		//
 	}
-
-    public int BusID
-    {
-        get { return busID; }
-        set { busID = value; }
-    }
 
     public string BusName
     {
