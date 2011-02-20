@@ -106,16 +106,16 @@ GO
 --Store information Admins, Employees, and customers
 CREATE TABLE Account(
 	AccountID int IDENTITY(1,1) PRIMARY KEY,
-	UserName nvarchar(50) NOT NULL,
-	Password nvarchar(50) NOT NULL,
-	[Role] nvarchar(50) NOT NULL,
-	Birthday datetime NOT NULL,
+	UserName nvarchar(50),
+	Password nvarchar(50),
+	[Role] nvarchar(50),
+	Birthday datetime,
 	Sex nvarchar(50),
-	IdentifyCode nvarchar(50),
+	IdentifyCode nvarchar(50) NOT NULL,
 	FullName nvarchar(50),
-	Address nvarchar(MAX),
+	Address nvarchar(MAX) NOT NULL,
 	Phone varchar(50),
-	Email nvarchar(50),
+	Email nvarchar(50) NOT NULL,
 	Status bit
 )
 GO
@@ -123,12 +123,11 @@ GO
 --Store information booking detail--
 CREATE TABLE Ticket(
 	TicketNo int IDENTITY(1,1) PRIMARY KEY,
-	DateBooking datetime NULL,
+	DateBooking datetime NOT NULL,
 	ListBusID int NOT NULL,
 	AccountID int NOT NULL,
 	NumberSeat int NOT NULL,
 	PromoteID int NOT NULL,
-	TotalFees float NULL,
 	Status bit
 )
 GO
@@ -147,6 +146,24 @@ GO
 ALTER TABLE Ticket
 ADD CONSTRAINT fk_Ticket_ListBus
 FOREIGN KEY (ListBusID) REFERENCES ListBus(ListBusID)
+ON DELETE CASCADE
+ON UPDATE CASCADE
+GO
+--CREATE TABLE TICKETRETURN-----------------------------------------------------------------------------------------------
+--Store information ticket return
+CREATE TABLE TicketReturn(
+	TicketReturnID int IDENTITY(1,1) PRIMARY KEY,
+	TicketName nvarchar(50),
+	Description ntext,
+	Price int,
+	DateReturn datetime,
+	TicketNo int,
+	Status bit
+)
+GO
+ALTER TABLE TicketReturn
+ADD CONSTRAINT fk_TicketReturn_Ticket
+FOREIGN KEY (TicketNo) REFERENCES Ticket(TicketNo)
 ON DELETE CASCADE
 ON UPDATE CASCADE
 GO
