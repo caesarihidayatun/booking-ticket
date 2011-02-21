@@ -42,13 +42,13 @@ ON DELETE CASCADE
 ON UPDATE CASCADE
 GO
 --CREATE TABLE ROUTER------------------------------------------------------------------------------------------------------
---Store information Routers--
+--Store information Routes--
 CREATE TABLE Router(
 	RouterID int IDENTITY(1,1) PRIMARY KEY,
 	RouterName nvarchar(50) NOT NULL,
 	StartPlace nvarchar(50) NOT NULL,
 	DestinationPlace nvarchar(50) NOT NULL,
-	Long int NOT NULL,
+	Distance int NOT NULL,
 	Description ntext,
 	CreateDate datetime NOT NULL,
 	Status bit

@@ -42,8 +42,7 @@ public partial class Admin_Controls_Menu : System.Web.UI.UserControl
 		                    "<ul style='display: none; visibility: hidden;'>"+
                                 "<li><a href='../Administrator/TicketList.aspx'>List Ticket</a></li>" +
     		                    "<li><a href='../Administrator/Booking.aspx'>Create Ticket</a></li>"+
-                                "<li class=''><a href='../Administrator/CustomerList.aspx'>Customer</a></li>" +
-		                    "</ul>"+
+                            "</ul>"+
 	                    "</li>"+
                         "<li class='' id='new'>" +
                             "<a class='top'>News</a>" +
