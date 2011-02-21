@@ -98,5 +98,23 @@ namespace DAL
             }
             return d;
         }
+
+        public static IDALRouter GetRouterDA()
+        {
+            IDALRouter d = null;
+            if (String.IsNullOrEmpty(dataAccessStringType))
+            {
+                throw (new NullReferenceException("DataAccessType in Web.config is null or empty"));
+            }
+            else
+            {
+                if (dataAccessStringType.Equals("SQLSERVER"))
+                {
+                    Type t = Type.GetType("DAL.DALRouter");
+                    d = (DALRouter)Activator.CreateInstance(t);
+                }
+            }
+            return d;
+        }
     }
 }
