@@ -50,7 +50,6 @@ CREATE TABLE Router(
 	DestinationPlace nvarchar(50) NOT NULL,
 	Distance int NOT NULL,
 	Description ntext,
-	CreateDate datetime NOT NULL,
 	Status bit
 )
 GO
@@ -136,11 +135,11 @@ ON DELETE CASCADE
 ON UPDATE CASCADE
 GO
 ---------------------------------------------------------------------------------------------------------------------------
-CREATE TABLE TicketCancel(
-	TicketCancelNo int IDENTITY(1,1) PRIMARY KEY,
-	TicketCancelName nvarchar(50) NOT NULL,
+CREATE TABLE CancelCharge(
+	CancelChargeNo int IDENTITY(1,1) PRIMARY KEY,
+	CancelChargeName nvarchar(50) NOT NULL,
 	PercentPrice int NOT NULL,
-	DateReturn int NOT NULL,
+	DateCancel int NOT NULL,
 	Status bit
 )
 GO
@@ -186,12 +185,12 @@ INSERT INTO Bus VALUES ('16H - 1102','4','3','05','16','True')
 INSERT INTO Bus VALUES ('16M - 9999','3','3','06','34','True')
 GO
 --ROUTER--
-INSERT INTO Router VALUES ('Ha Noi - Bac Giang','Ha Noi','Bac Giang','60','Interprovincial',dateadd(dd,-30,getdate()),'True')
-INSERT INTO Router VALUES ('Ha Noi - Hai Phong','Ha Noi','Hai Phong','130','Interprovincial',dateadd(dd,-30,getdate()),'True')
-INSERT INTO Router VALUES ('Ha Noi - Nam Dinh','Ha Noi','Nam Dinh','120','Interprovincial',dateadd(dd,-30,getdate()),'True')
-INSERT INTO Router VALUES ('Ha Noi - Hai Duong','Ha Noi','Hai Duong','70','Interprovincial',dateadd(dd,-30,getdate()),'True')
-INSERT INTO Router VALUES ('Hai Phong - Thai Nguyen','Hai Phong','Thai Nguyen','300','Interprovincial',dateadd(dd,-30,getdate()),'True')
-INSERT INTO Router VALUES ('Hai Phong - Nam Dinh','Hai Phong','Nam Dinh','75','Interprovincial',dateadd(dd,-30,getdate()),'True')
+INSERT INTO Router VALUES ('Ha Noi - Bac Giang','Ha Noi','Bac Giang','60','Interprovincial','True')
+INSERT INTO Router VALUES ('Ha Noi - Hai Phong','Ha Noi','Hai Phong','130','Interprovincial','True')
+INSERT INTO Router VALUES ('Ha Noi - Nam Dinh','Ha Noi','Nam Dinh','120','Interprovincial','True')
+INSERT INTO Router VALUES ('Ha Noi - Hai Duong','Ha Noi','Hai Duong','70','Interprovincial','True')
+INSERT INTO Router VALUES ('Hai Phong - Thai Nguyen','Hai Phong','Thai Nguyen','300','Interprovincial','True')
+INSERT INTO Router VALUES ('Hai Phong - Nam Dinh','Hai Phong','Nam Dinh','75','Interprovincial','True')
 GO
 --LISTBUS--
 INSERT INTO ListBus VALUES ('1','30B - 4557',getdate(),'07:00 PM','60','True')
@@ -230,10 +229,10 @@ INSERT INTO Place VALUES ('Thanh Hoa')
 INSERT INTO Place VALUES ('Vinh Phuc')
 INSERT INTO Place VALUES ('Yen Bai')
 GO
---TicketCancel--
-INSERT INTO TicketCancel VALUES ('More than 2 day',0,2,'True')
-INSERT INTO TicketCancel VALUES ('More than 1 day',15,1,'True')
-INSERT INTO TicketCancel VALUES ('More than 2 day',30,0,'True')
+--CancelCharge--
+INSERT INTO CancelCharge VALUES ('More than 2 day',0,2,'True')
+INSERT INTO CancelCharge VALUES ('More than 1 day',15,1,'True')
+INSERT INTO CancelCharge VALUES ('More than 2 day',30,0,'True')
 
 
 
