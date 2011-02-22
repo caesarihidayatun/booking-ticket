@@ -25,7 +25,7 @@ public partial class Admin_Controls_Menu : System.Web.UI.UserControl
 			                    "<li><a href='../Administrator/BustypeList.aspx'>Bus Type</a></li>"+
 			                    "<li><a href='../Administrator/BusList.aspx'>Bus</a></li>"+
 			                    "<li><a href='../Administrator/PlaceList.aspx'>Place</a></li>"+
-                                "<li><a href='../Administrator/TicketReturnList.aspx'>Ticket Return</a></li>" +
+                                "<li><a href='../Administrator/TicketCancelList.aspx'>Ticket Cancel</a></li>" +
                                 "<li><a href='../Administrator/PromoteList.aspx'>Promote</a></li>" +
 		                    "</ul>"+
 	                    "</li>"+
@@ -33,16 +33,14 @@ public partial class Admin_Controls_Menu : System.Web.UI.UserControl
 		                    "<a class='top'>Router</a>"+
 		                    "<ul style='display: none; visibility: hidden;'>"+
     		                    "<li><a href='../Administrator/RouterList.aspx'>Router</a></li>"+
-    		                    "<li><a href='../Administrator/ListBusList.aspx'>List Bus</a></li>"+
-    		                    "<li><a href='../Administrator/SeatList.aspx'>Seat</a></li>"+
+    		                    "<li><a href='../Administrator/ListBus.aspx'>List Bus</a></li>"+
 		                    "</ul>"+
 	                    "</li>"+
 	                    "<li class='' id='sale'>"+
 		                    "<a class='top'>Sales</a>"+
 		                    "<ul style='display: none; visibility: hidden;'>"+
                                 "<li><a href='../Administrator/TicketList.aspx'>List Ticket</a></li>" +
-    		                    "<li><a href='../Administrator/Booking.aspx'>Create Ticket</a></li>"+
-                            "</ul>"+
+    		                "</ul>"+
 	                    "</li>"+
                         "<li class='' id='new'>" +
                             "<a class='top'>News</a>" +

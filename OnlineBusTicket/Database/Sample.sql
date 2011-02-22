@@ -78,21 +78,6 @@ FOREIGN KEY (BusPlate) REFERENCES Bus(BusPlate)
 ON DELETE CASCADE
 ON UPDATE CASCADE
 GO
---CREATE TABLE SEAT--------------------------------------------------------------------------------------------------------
---Store seats status on bus--
-CREATE TABLE Seat(
-	SeatID int IDENTITY(1,1) PRIMARY KEY,
-	ListBusID int NOT NULL,
-	NumberSeat int NOT NULL,
-	Status bit
-)
-GO
-ALTER TABLE Seat
-ADD CONSTRAINT fk_Seat_ListBus
-FOREIGN KEY (ListBusID) REFERENCES ListBus(ListBusID)
-ON DELETE CASCADE
-ON UPDATE CASCADE
-GO
 --CREATE TABLE PROMOTE-----------------------------------------------------------------------------------------------------
 --Store type of discount charges--
 CREATE TABLE Promote(
@@ -128,7 +113,8 @@ CREATE TABLE Ticket(
 	AccountID int NOT NULL,
 	NumberSeat int NOT NULL,
 	PromoteID int NOT NULL,
-	Status bit
+	TotalFees int,
+	Status int
 )
 GO
 ALTER TABLE Ticket
@@ -149,23 +135,14 @@ FOREIGN KEY (ListBusID) REFERENCES ListBus(ListBusID)
 ON DELETE CASCADE
 ON UPDATE CASCADE
 GO
---CREATE TABLE TICKETRETURN-----------------------------------------------------------------------------------------------
---Store information ticket return
-CREATE TABLE TicketReturn(
-	TicketReturnID int IDENTITY(1,1) PRIMARY KEY,
-	TicketName nvarchar(50),
-	Description ntext,
-	Price int,
-	DateReturn datetime,
-	TicketNo int,
+---------------------------------------------------------------------------------------------------------------------------
+CREATE TABLE TicketCancel(
+	TicketCancelNo int IDENTITY(1,1) PRIMARY KEY,
+	TicketCancelName nvarchar(50) NOT NULL,
+	PercentPrice int NOT NULL,
+	DateReturn int NOT NULL,
 	Status bit
 )
-GO
-ALTER TABLE TicketReturn
-ADD CONSTRAINT fk_TicketReturn_Ticket
-FOREIGN KEY (TicketNo) REFERENCES Ticket(TicketNo)
-ON DELETE CASCADE
-ON UPDATE CASCADE
 GO
 --CREATE TABLE PLACE-------------------------------------------------------------------------------------------------------
 --Store place--
@@ -252,6 +229,13 @@ INSERT INTO Place VALUES ('Thai Nguyen')
 INSERT INTO Place VALUES ('Thanh Hoa')
 INSERT INTO Place VALUES ('Vinh Phuc')
 INSERT INTO Place VALUES ('Yen Bai')
+GO
+--TicketCancel--
+INSERT INTO TicketCancel VALUES ('More than 2 day',0,2,'True')
+INSERT INTO TicketCancel VALUES ('More than 1 day',15,1,'True')
+INSERT INTO TicketCancel VALUES ('More than 2 day',30,0,'True')
+
+
 
 
 
