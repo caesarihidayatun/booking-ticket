@@ -21,7 +21,6 @@ public class Router
     private string destinationPlace;
     private int distance;
     private string description;
-    private DateTime createDate;
     private bool status;
 
 	public Router()
@@ -65,12 +64,6 @@ public class Router
     {
         get { return description; }
         set { description = value; }
-    }
-
-    public DateTime CreateDate
-    {
-        get { return createDate; }
-        set { createDate = value; }
     }
 
     public bool Status
