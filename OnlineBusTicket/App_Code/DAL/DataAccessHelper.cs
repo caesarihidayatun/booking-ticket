@@ -116,5 +116,23 @@ namespace DAL
             }
             return d;
         }
+
+        public static IDALCancelCharge GetCancelChargeDA()
+        {
+            IDALCancelCharge d = null;
+            if (String.IsNullOrEmpty(dataAccessStringType))
+            {
+                throw (new NullReferenceException("DataAccessType in Web.config is null or empty"));
+            }
+            else
+            {
+                if (dataAccessStringType.Equals("SQLSERVER"))
+                {
+                    Type t = Type.GetType("DAL.DALCancelCharge");
+                    d = (DALCancelCharge)Activator.CreateInstance(t);
+                }
+            }
+            return d;
+        }
     }
 }

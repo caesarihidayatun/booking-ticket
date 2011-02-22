@@ -10,35 +10,33 @@ using System.Xml.Linq;
 using System.Data.SqlClient;
 
 /// <summary>
-/// Summary description for DALRouter
+/// Summary description for DALCancelCharge
 /// </summary>
 
 namespace DAL
 {
-    public class DALRouter : DALBase, IDALRouter
+    public class DALCancelCharge : DALBase, IDALCancelCharge
     {
-        private const string tableName = "Router";
-        private const string routerId = "RouterID";
-        private const string routerName = "RouterName";
-        private const string startPlace = "StartPlace";
-        private const string destinationPlace = "DestinationPlace";
-        private const string distance = "Distance";
-        private const string description = "Description";
+        private const string tableName = "CancelCharge";
+        private const string cancelChargeNo = "CancelChargeNo";
+        private const string cancelChargeName = "CancelChargeName";
+        private const string percentPrice = "PercentPrice";
+        private const string dateCancel = "DateCancel";
         private const string status = "Status";
 
-        public DALRouter()
+        public DALCancelCharge()
         {
             //
             // TODO: Add constructor logic here
             //
         }
 
-        public int InsertRouter(Router router) {
+        public int InsertCancelCharge(CancelCharge cancelCharge) {
             int result = 0;
             try
             {
-                String[] columns = {routerName, startPlace, destinationPlace, distance, description, status};
-                Object[] values = {router.RouterName, router.StartPlace, router.DestinationPlace, router.Distance, router.Description, router.Status};
+                String[] columns = {cancelChargeName, percentPrice, dateCancel, status};
+                Object[] values = {cancelCharge.CancelChargeName, cancelCharge.PercentPrice, cancelCharge.DateCancel, cancelCharge.Status};
                 result = DALBase.InsertTable(tableName, columns, values) ;
             }
             catch (Exception ex)
@@ -48,12 +46,12 @@ namespace DAL
             return result;
         }
 
-        public int DeleteRouter(int id)
+        public int DeleteCancelCharge(int id)
         {
             int result = 0;
             try
             {
-                String[] keyColumnNames = {routerId};
+                String[] keyColumnNames = {cancelChargeNo};
                 Object[] keyColumnValues = {id};
                 result = DALBase.DeleteTable(tableName, keyColumnNames, keyColumnValues);
             }
@@ -65,15 +63,15 @@ namespace DAL
 
         }
 
-        public int UpdateRouter(Router router)
+        public int UpdateCancelCharge(CancelCharge cancelCharge)
         {
             int result = 0;
             try
             {
-                String[] columnNames = { routerName, startPlace, destinationPlace, distance, description, status };
-                Object[] values = { router.RouterName, router.StartPlace, router.DestinationPlace, router.Distance, router.Description, router.Status };
-                String[] keyColumnNames = {routerId};
-                Object[] keyColumnValues = {router.RouterID};
+                String[] columnNames = { cancelChargeName, percentPrice, dateCancel, status };
+                Object[] values = { cancelCharge.CancelChargeName, cancelCharge.PercentPrice, cancelCharge.DateCancel, cancelCharge.Status };
+                String[] keyColumnNames = {cancelChargeNo};
+                Object[] keyColumnValues = {cancelCharge.CancelChargeNo};
                 result = DALBase.UpdateTable(tableName, columnNames, values, keyColumnNames, keyColumnValues);
             }
             catch (Exception ex)
@@ -83,17 +81,17 @@ namespace DAL
             return result;
         }
 
-        public Router[] getRouterByID(int id)
+        public CancelCharge[] getCancelChargeByID(int id)
         {
-            Router[] result = null;
+            CancelCharge[] result = null;
             try
             {
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = String.Format("Select * from Router where {0} = @{1}", routerId, routerId);
-                cmd.Parameters.Add(String.Format("@{0}", routerId), SqlDbType.Int).Value = id;
-                String[] columnNames = { routerId, routerName, startPlace, destinationPlace, distance, description, status };
-                result = SelectCollection<Router>(columnNames, columnNames, cmd);
+                cmd.CommandText = String.Format("Select * from CancelCharge where {0} = @{1}", cancelChargeNo, cancelChargeNo);
+                cmd.Parameters.Add(String.Format("@{0}", cancelChargeNo), SqlDbType.Int).Value = id;
+                String[] columnNames = { cancelChargeNo, cancelChargeName, percentPrice, dateCancel, status };
+                result = SelectCollection<CancelCharge>(columnNames, columnNames, cmd);
 
             }
             catch (Exception ex)
@@ -103,7 +101,7 @@ namespace DAL
             return result;
         }
 
-        public DataTable getAllRouter()
+        public DataTable getAllCancelCharge()
         {
             try
             {
@@ -115,7 +113,7 @@ namespace DAL
             }
         }
 
-        public DataTable getAllRouterByStatus(Boolean status)
+        public DataTable getAllCancelChargeByStatus(Boolean status)
         {
             try
             {
@@ -127,11 +125,11 @@ namespace DAL
             }
         }
 
-        public int checkRouterNameExist(String name) 
+        public int checkCancelChargeExist(String name) 
         {
             try
             {
-                return RecordExisted(tableName, routerName, name);
+                return RecordExisted(tableName, cancelChargeName, name);
             }
             catch (Exception ex)
             {

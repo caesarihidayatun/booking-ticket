@@ -59,8 +59,8 @@ CREATE TABLE ListBus(
 	ListBusID int IDENTITY(1,1) PRIMARY KEY,
 	RouterID int NOT NULL,
 	BusPlate nvarchar(50) NOT NULL,
-	DepartureDate datetime NOT NULL,
-	DepartureTime nvarchar(50) NOT NULL,
+	Departure datetime NOT NULL,
+	Arrival datetime NOT NULL,
 	Price float NOT NULL,
 	Status bit
 )
@@ -193,12 +193,12 @@ INSERT INTO Router VALUES ('Hai Phong - Thai Nguyen','Hai Phong','Thai Nguyen','
 INSERT INTO Router VALUES ('Hai Phong - Nam Dinh','Hai Phong','Nam Dinh','75','Interprovincial','True')
 GO
 --LISTBUS--
-INSERT INTO ListBus VALUES ('1','30B - 4557',getdate(),'07:00 PM','60','True')
-INSERT INTO ListBus VALUES ('2','30H - 4444',getdate(),'07:00 AM','100','True')
-INSERT INTO ListBus VALUES ('3','30L - 3144',getdate(),'09:00 AM','95','True')
-INSERT INTO ListBus VALUES ('4','30L - 3145',getdate(),'08:00 AM','75','True')
-INSERT INTO ListBus VALUES ('5','16H - 1102',getdate(),'06:00 AM','150','True')
-INSERT INTO ListBus VALUES ('6','16M - 9999',getdate(),'09:00 AM','55','True')
+INSERT INTO ListBus VALUES ('1','30B - 4557',getdate(),dateadd(hh,2,getdate()),'60','True')
+INSERT INTO ListBus VALUES ('2','30H - 4444',getdate(),dateadd(hh,5,getdate()),'100','True')
+INSERT INTO ListBus VALUES ('3','30L - 3144',getdate(),dateadd(hh,10,getdate()),'95','True')
+INSERT INTO ListBus VALUES ('4','30L - 3145',getdate(),dateadd(hh,3,getdate()),'75','True')
+INSERT INTO ListBus VALUES ('5','16H - 1102',getdate(),dateadd(hh,4,getdate()),'150','True')
+INSERT INTO ListBus VALUES ('6','16M - 9999',getdate(),dateadd(hh,8,getdate()),'55','True')
 GO
 --PROMOTE--
 INSERT INTO Promote VALUES ('Under five old','100','True')
