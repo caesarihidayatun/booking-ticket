@@ -13,6 +13,9 @@
 
 <body>
 <div id="main_container">
+    <form runat="server"> 
+    
+    
 	<div class="header">
     	<div id="logo"><a href="index.html"><img src="../Template/Client/images/logo.png" alt="" title="" width="162" height="54" border="0" /></a></div>
     
@@ -41,32 +44,9 @@
     	<div class="middle_box_content"><img src="../Template/Client/images/banner_content.jpg" alt="" title="" /></div>
     </div>
     
-    
-    <div class="pattern_bg">
-    
-    	<div class="pattern_box">
-            <div class="pattern_box_icon"><img src="../Template/Client/images/icon1.png" alt="" title="" width="70" height="112" /></div>
-            <div class="pattern_content">
-            <h1>My <span class="blue">Medicine</span></h1>
-            <p class="pat">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
-            </div>
-        </div>
-        
-        
-    	<div class="pattern_box">
-            <div class="pattern_box_icon"><img src="../Template/Client/images/icon2.png" alt="" title="" width="70" height="112" /></div>
-            <div class="pattern_content">
-            <h1>Search <span class="blue"> Treatments</span></h1>
-            <p class="pat">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
-            </div>
-        </div>        
-        
-    
-    </div>
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+    </asp:ContentPlaceHolder>
+
     
     <div id="main_content">
     
@@ -101,21 +81,23 @@
                         <h2>My <span class="dark_blue"> Goals</span></h2>
                     </div>
                     
-                    <div class="box_text_content">
-                    	<img src="../Template/Client/images/checked.gif" alt="" title="" class="box_icon" />
-                        <div class="box_text">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        </div>
-                        <a href="#" class="details">+ details</a>
-                    </div>
 
-                    <div class="box_text_content">
-                    	<img src="../Template/Client/images/checked.gif" alt="" title="" class="box_icon" />
-                        <div class="box_text">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        <asp:Repeater ID="Repeater1" runat="server"   >  
+                        <ItemTemplate>
+                        <div class="box_text_content">
+                    	    <img src="../Template/Client/images/checked.gif" alt="" title="" class="box_icon" />
+                            <div class="box_text">
+                                <%#Eval("Description") %>
+                            </div>
+                                <a href="#" class="details">+ details</a>
+                            </div>
+                        </ItemTemplate> 
+                        </asp:Repeater>
+                        <div style="position:absolute">
+                            <asp:label ID="lblCurrentPage" runat="server"></asp:label>
+                            <asp:HyperLink id="lnkPrev" runat="server" ForeColor="#FFFF66" ><< Prev</asp:HyperLink>
+                            <asp:HyperLink id="lnkNext" runat="server" ForeColor="#FFFF66">Next >></asp:HyperLink>
                         </div>
-                        <a href="#" class="details">+ details</a>
-                    </div>
 	
             </div>            
             
@@ -145,15 +127,7 @@
             </div>           
             
             
-            
-            
-            
-            
-            
-            
-            
-         
-            
+                     
             
         <div class="clear"></div>    
        </div>     
@@ -171,7 +145,7 @@
     
     </div>
 
-
+    </form>
 </div>
 </body>
 </html>
