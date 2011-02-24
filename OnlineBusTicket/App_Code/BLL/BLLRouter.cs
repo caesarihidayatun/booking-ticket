@@ -115,5 +115,18 @@ namespace BLL
                 throw ex;
             }
         }
+        public static Router getIDrouter(String startPlace, String destinationPlace)
+        {
+            Router[] result = null;
+            try
+            {
+                result = DataAccessHelper.GetIDrouterDA().getIDrouter(startPlace, destinationPlace);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return result[0];
+        }
     }
 }
