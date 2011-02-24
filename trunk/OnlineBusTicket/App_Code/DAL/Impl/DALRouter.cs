@@ -138,5 +138,25 @@ namespace DAL
                 throw ex;
             }
         }
+        public Router[] getIDrouter(String startPlace, String destinationPlace)
+        {
+            Router[] result = null;
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "select RouterID from Router where StartPlace=@startPlace and DestinationPlace=@destinationPlace";
+                cmd.Parameters.AddWithValue("@startPlace", startPlace);
+                cmd.Parameters.AddWithValue("@destinationPlace", destinationPlace);
+                String[] columnNames = {routerId};
+                result = SelectCollection<Router>(null, columnNames, cmd);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return result;
+        }
     }
 }
