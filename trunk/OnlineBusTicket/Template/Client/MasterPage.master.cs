@@ -33,7 +33,7 @@ public partial class Template_Client_MasterPage : System.Web.UI.MasterPage
 
 
             objPds.CurrentPageIndex = CurPage - 1;
-            lblCurrentPage.Text = "Page: " + CurPage.ToString();
+            //lblCurrentPage.Text = "Page: " + CurPage.ToString();
 
             if (!objPds.IsFirstPage)
                 lnkPrev.NavigateUrl = Request.CurrentExecutionFilePath
