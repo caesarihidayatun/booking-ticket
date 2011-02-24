@@ -78,10 +78,14 @@
  			<div class="box_content">
 					<div class="box_title">
                     	<div class="title_icon"><img src="../Template/Client/images/mini_icon2.gif" alt="" title="" /></div>
-                        <h2>My <span class="dark_blue"> Goals</span></h2>
+                        <h2>My <span class="dark_blue"> Goals </span>
+                        &nbsp;&nbsp;&nbsp;
+                            <asp:HyperLink id="lnkPrev" runat="server" CssClass="dark_blue" ><< Prev</asp:HyperLink>
+                            <asp:HyperLink id="lnkNext" runat="server" CssClass="dark_blue">Next >></asp:HyperLink>
+                        </h2>
                     </div>
                     
-
+                    
                         <asp:Repeater ID="Repeater1" runat="server"   >  
                         <ItemTemplate>
                         <div class="box_text_content">
@@ -93,11 +97,7 @@
                             </div>
                         </ItemTemplate> 
                         </asp:Repeater>
-                        <div style="position:absolute">
-                            <asp:label ID="lblCurrentPage" runat="server"></asp:label>
-                            <asp:HyperLink id="lnkPrev" runat="server" ForeColor="#FFFF66" ><< Prev</asp:HyperLink>
-                            <asp:HyperLink id="lnkNext" runat="server" ForeColor="#FFFF66">Next >></asp:HyperLink>
-                        </div>
+                        
 	
             </div>            
             
