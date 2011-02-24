@@ -13,62 +13,66 @@ using System.Xml.Linq;
 /// <summary>
 /// Summary description for Router
 /// </summary>
-public class Router
+/// 
+namespace DAL
 {
-    private int routerID;
-    private string routerName;
-    private string startPlace;
-    private string destinationPlace;
-    private int distance;
-    private string description;
-    private bool status;
-
-	public Router()
-	{
-		//
-		// TODO: Add constructor logic here
-		//
-	}
-
-    public int RouterID
+    public class Router
     {
-        get { return routerID; }
-        set { routerID = value; }
-    }
-    
-    public string RouterName
-    {
-        get { return routerName; }
-        set { routerName = value; }
-    }
+        private int routerID;
+        private string routerName;
+        private string startPlace;
+        private string destinationPlace;
+        private int distance;
+        private string description;
+        private bool status;
 
-    public string StartPlace
-    {
-        get { return startPlace; }
-        set { startPlace = value; }
-    }
+        public Router()
+        {
+            //
+            // TODO: Add constructor logic here
+            //
+        }
 
-    public string DestinationPlace
-    {
-        get { return destinationPlace; }
-        set { destinationPlace = value; }
-    }
+        public int RouterID
+        {
+            get { return routerID; }
+            set { routerID = value; }
+        }
 
-    public int Distance
-    {
-        get { return distance; }
-        set { distance = value; }
-    }
+        public string RouterName
+        {
+            get { return routerName; }
+            set { routerName = value; }
+        }
 
-    public string Description
-    {
-        get { return description; }
-        set { description = value; }
-    }
+        public string StartPlace
+        {
+            get { return startPlace; }
+            set { startPlace = value; }
+        }
 
-    public bool Status
-    {
-        get { return status; }
-        set { status = value; }
+        public string DestinationPlace
+        {
+            get { return destinationPlace; }
+            set { destinationPlace = value; }
+        }
+
+        public int Distance
+        {
+            get { return distance; }
+            set { distance = value; }
+        }
+
+        public string Description
+        {
+            get { return description; }
+            set { description = value; }
+        }
+
+        public bool Status
+        {
+            get { return status; }
+            set { status = value; }
+        }
     }
 }
