@@ -116,6 +116,23 @@ namespace DAL
             }
             return d;
         }
+        public static IDALRouter GetIDrouterDA()
+        {
+            IDALRouter d = null;
+            if (String.IsNullOrEmpty(dataAccessStringType))
+            {
+                throw (new NullReferenceException("DataAccessType in Web.config is null or empty"));
+            }
+            else
+            {
+                if (dataAccessStringType.Equals("SQLSERVER"))
+                {
+                    Type t = Type.GetType("DAL.DALRouter");
+                    d = (DALRouter)Activator.CreateInstance(t);
+                }
+            }
+            return d;
+        }
 
         public static IDALCancelCharge GetCancelChargeDA()
         {
@@ -152,9 +169,9 @@ namespace DAL
             }
             return d;
         }
-        public static IDALInfoBusRouter GetInfoBusRouterDA()
+        public static IDALListBus GetListBusCustomerDA()
         {
-            IDALInfoBusRouter d = null;
+            IDALListBus d = null;
             if (String.IsNullOrEmpty(dataAccessStringType))
             {
                 throw (new NullReferenceException("DataAccessType in Web.config is null or empty"));
@@ -163,8 +180,8 @@ namespace DAL
             {
                 if (dataAccessStringType.Equals("SQLSERVER"))
                 {
-                    Type t = Type.GetType("DAL.DALInfoBusRouter");
-                    d = (IDALInfoBusRouter)Activator.CreateInstance(t);
+                    Type t = Type.GetType("DAL.DALListBus");
+                    d = (IDALListBus)Activator.CreateInstance(t);
                 }
             }
             return d;
