@@ -91,6 +91,10 @@ public partial class Administrator_RouterList : System.Web.UI.Page
                 dv.Sort = "RouterName DESC"; break;
             case 5:
                 dv.Sort = "Distance DESC"; break;
+            case 6:
+                dv.Sort = "Status DESC"; break;
+            case 7:
+                dv.Sort = "Status ASC"; break;
         }
         total.Text = dv.Count.ToString();
         gvRouterList.DataSource = dv;

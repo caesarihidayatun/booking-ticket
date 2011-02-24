@@ -50,9 +50,11 @@
                                     <asp:ListItem Value="0">BusName (Increase)</asp:ListItem>
                                     <asp:ListItem Value="1">BusPlate (Increase)</asp:ListItem>
                                     <asp:ListItem Value="2">Seat (Increase)</asp:ListItem>
+                                    <asp:ListItem Value="6">Status (Decrease)</asp:ListItem>
                                      <asp:ListItem Value="3">BusName (Decrease)</asp:ListItem>
                                     <asp:ListItem Value="4">BusPlate (Decrease)</asp:ListItem>
                                     <asp:ListItem Value="5">Seat (Decrease)</asp:ListItem>
+                                    <asp:ListItem Value="7">Status (Increase)</asp:ListItem>
                 </asp:DropDownList>
                             </td>
                             <td align="right">

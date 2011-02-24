@@ -50,9 +50,11 @@
                                     <asp:ListItem Value="0">Cancel Charge No (Increase)</asp:ListItem>
                                     <asp:ListItem Value="1">Cancel Charge Name (Increase)</asp:ListItem>
                                     <asp:ListItem Value="2">Percent Price (Increase)</asp:ListItem>
-                                     <asp:ListItem Value="3">Cancel Charge No (Decrease)</asp:ListItem>
+                                    <asp:ListItem Value="6">Status (Decrease)</asp:ListItem>
+                                    <asp:ListItem Value="3">Cancel Charge No (Decrease)</asp:ListItem>
                                     <asp:ListItem Value="4">Cancel Charge Name (Decrease)</asp:ListItem>
                                     <asp:ListItem Value="5">Percent Price (Decrease)</asp:ListItem>
+                                    <asp:ListItem Value="7">Status (Increase)</asp:ListItem>
                 </asp:DropDownList>
                             </td>
                             <td align="right">

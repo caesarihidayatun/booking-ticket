@@ -87,6 +87,10 @@ public partial class Administrator_CategoryList : System.Web.UI.Page
                 dv.Sort = "CategoryName ASC"; break;
             case 3:
                 dv.Sort = "CategoryName DESC"; break;
+            case 4:
+                dv.Sort = "Status ASC"; break;
+            case 5:
+                dv.Sort = "Status DESC"; break;
                
         }
         total.Text = dv.Count.ToString();

@@ -91,6 +91,11 @@ public partial class Administrator_CancelChargeList : System.Web.UI.Page
                 dv.Sort = "CancelChargeName DESC"; break;
             case 5:
                 dv.Sort = "PercentPrice DESC"; break;
+            case 6:
+                dv.Sort = "Status DESC"; break;
+            case 7:
+                dv.Sort = "Status ASC"; break;
+
 
         }
         total.Text = dv.Count.ToString();

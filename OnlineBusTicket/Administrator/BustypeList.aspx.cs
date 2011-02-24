@@ -87,6 +87,10 @@ public partial class Administrator_BusTypeList : System.Web.UI.Page
                 dv.Sort = "Type ASC"; break;
             case 3:
                 dv.Sort = "Type DESC"; break;
+            case 4:
+                dv.Sort = "Status DESC"; break;
+            case 5:
+                dv.Sort = "Status ASC"; break;
                
         }
         total.Text = dv.Count.ToString();

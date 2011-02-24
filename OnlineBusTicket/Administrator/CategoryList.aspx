@@ -49,9 +49,10 @@
                                     onselectedindexchanged="DropDownList1_SelectedIndexChanged">
                                     <asp:ListItem Value="0">CategoryID (Increase)</asp:ListItem>
                                     <asp:ListItem Value="2">CategoryName (Increase)</asp:ListItem>
+                                    <asp:ListItem Value="5">Status (Decrease)</asp:ListItem>
                                     <asp:ListItem Value="1">CategoryID (Decrease)</asp:ListItem>
                                     <asp:ListItem Value="3">CategoryName (Decrease)</asp:ListItem>
-                                    <asp:ListItem Value="4">Status (Group)</asp:ListItem>
+                                    <asp:ListItem Value="4">Status (Increase)</asp:ListItem>
                 </asp:DropDownList>
                             </td>
                             <td align="right">

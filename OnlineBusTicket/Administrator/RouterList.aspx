@@ -50,9 +50,11 @@
                                     <asp:ListItem Value="0">RouterID (Increase)</asp:ListItem>
                                     <asp:ListItem Value="1">RouterName (Increase)</asp:ListItem>
                                     <asp:ListItem Value="2">Distance (Increase)</asp:ListItem>
+                                    <asp:ListItem Value="6">Status (Decrease)</asp:ListItem>
                                     <asp:ListItem Value="3">RouterID (Decrease)</asp:ListItem>
                                     <asp:ListItem Value="4">RouterName (Decrease)</asp:ListItem>
                                     <asp:ListItem Value="5">Distance (Decrease)</asp:ListItem>
+                                    <asp:ListItem Value="7">Status (Increase)</asp:ListItem>
                                     
                 </asp:DropDownList>
                             </td>
