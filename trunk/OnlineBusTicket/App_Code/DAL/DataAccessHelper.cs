@@ -152,5 +152,39 @@ namespace DAL
             }
             return d;
         }
+        public static IDALInfoBusRouter GetInfoBusRouterDA()
+        {
+            IDALInfoBusRouter d = null;
+            if (String.IsNullOrEmpty(dataAccessStringType))
+            {
+                throw (new NullReferenceException("DataAccessType in Web.config is null or empty"));
+            }
+            else
+            {
+                if (dataAccessStringType.Equals("SQLSERVER"))
+                {
+                    Type t = Type.GetType("DAL.DALInfoBusRouter");
+                    d = (IDALInfoBusRouter)Activator.CreateInstance(t);
+                }
+            }
+            return d;
+        }
+        public static IDALNews GetNewsDA()
+        {
+            IDALNews d = null;
+            if (String.IsNullOrEmpty(dataAccessStringType))
+            {
+                throw (new NullReferenceException("DataAccessType in Web.config is null or empty"));
+            }
+            else
+            {
+                if (dataAccessStringType.Equals("SQLSERVER"))
+                {
+                    Type t = Type.GetType("DAL.DALNews");
+                    d = (IDALNews)Activator.CreateInstance(t);
+                }
+            }
+            return d;
+        }
     }
 }
