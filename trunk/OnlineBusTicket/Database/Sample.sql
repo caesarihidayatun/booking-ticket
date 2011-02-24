@@ -193,12 +193,12 @@ INSERT INTO Router VALUES ('Hai Phong - Thai Nguyen','Hai Phong','Thai Nguyen','
 INSERT INTO Router VALUES ('Hai Phong - Nam Dinh','Hai Phong','Nam Dinh','75','Interprovincial','True')
 GO
 --LISTBUS--
-INSERT INTO ListBus VALUES ('1','30B - 4557',getdate(),dateadd(hh,2,getdate()),'60','True')
-INSERT INTO ListBus VALUES ('2','30H - 4444',getdate(),dateadd(hh,5,getdate()),'100','True')
-INSERT INTO ListBus VALUES ('3','30L - 3144',getdate(),dateadd(hh,10,getdate()),'95','True')
-INSERT INTO ListBus VALUES ('4','30L - 3145',getdate(),dateadd(hh,3,getdate()),'75','True')
-INSERT INTO ListBus VALUES ('5','16H - 1102',getdate(),dateadd(hh,4,getdate()),'150','True')
-INSERT INTO ListBus VALUES ('6','16M - 9999',getdate(),dateadd(hh,8,getdate()),'55','True')
+INSERT INTO ListBus VALUES ('1','30B - 4557',dateadd(mi,30,getdate()),dateadd(hh,2,getdate()),'60','True')
+INSERT INTO ListBus VALUES ('2','30H - 4444',dateadd(hh,1,getdate()),dateadd(hh,5,getdate()),'100','True')
+INSERT INTO ListBus VALUES ('3','30L - 3144',dateadd(hh,2,getdate()),dateadd(hh,10,getdate()),'95','True')
+INSERT INTO ListBus VALUES ('4','30L - 3145',dateadd(mi,20,getdate()),dateadd(hh,3,getdate()),'75','True')
+INSERT INTO ListBus VALUES ('5','16H - 1102',dateadd(mi,50,getdate()),dateadd(hh,4,getdate()),'150','True')
+INSERT INTO ListBus VALUES ('6','16M - 9999',dateadd(hh,3,getdate()),dateadd(hh,8,getdate()),'55','True')
 GO
 --PROMOTE--
 INSERT INTO Promote VALUES ('Under five old','100','True')
