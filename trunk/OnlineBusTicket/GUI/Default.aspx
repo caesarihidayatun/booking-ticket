@@ -1,16 +1,17 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Template/Client/MasterPage.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="GUI_Default" Title="Untitled Page" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-
-    <script type="text/javascript" src="../Template/Scripts/jquery-1.4.2.min.js"></script>
-    <script type="text/javascript" src="../Template/Scripts/superfish.js"></script>
-    <script type="text/javascript" src="../Template/Scripts/jquery-ui-1.8.2.custom.min.js"></script>
-    <script type="text/javascript" src="../Template/Client/jquery-ui-1.8.2.custom.css"></script>
+<script type="text/javascript" src="../Template/Scripts/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="../Template/Scripts/date.js"></script>
+    <script type="text/javascript" src="../Template/Scripts/jquery.datePicker-2.1.2.js"></script>
+    <link rel="stylesheet" type="text/css" href="../Template/Client/datepicker.css" />
     <script language="javascript" type="text/javascript">
-        $(document).ready(function() {
-            $("#<%=txtFromDate.ClientID %>").datepicker();
-            $("#<%=txtToDate.ClientID %>").datepicker();
-        });      
+           $(function()
+            {
+            $('.text').datePicker().val(new Date().asString()).trigger('change');
+            $('.text').datePicker().val(new Date().asString()).trigger('change');
+        }); 
+             
     </script>    
     
     <div class="pattern_bg">
@@ -29,18 +30,18 @@
                         <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Size="11pt" 
                             ForeColor="White" Text="From"></asp:Label>
                     </td>
-                    <td style="width: 141px">
+                    <td style="width: 150px">
                         <asp:DropDownList ID="DropDownFrom" runat="server" Height="17px" Width="143px">
                         </asp:DropDownList>
                     </td>
-                    <td style="width: 15px">
+                    <td style="width: 41px">
                         &nbsp;
                     </td>
                     <td style="width: 65px" align="left">
                         <asp:Label ID="Label2" runat="server" Font-Bold="True" Font-Size="11pt" 
                             ForeColor="White" Text="To"></asp:Label>
                     </td>
-                    <td>
+                    <td style="width: 150px">
                         
                         <asp:DropDownList ID="DropDownTo" runat="server" Width="143px">
                         </asp:DropDownList>
@@ -53,16 +54,16 @@
                             ForeColor="White" Text="Date From"></asp:Label>
                     </td>
                     <td style="width: 141px">
-                         <asp:TextBox ID="txtFromDate" runat="server"  style="width: 140px;"></asp:TextBox>
+                         <asp:TextBox ID="txtFromDate" runat="server" CssClass="text" style="width: 140px;"></asp:TextBox>
                     </td>
-                    <td style="width: 15px">
+                    <td style="width: 41px">
                         &nbsp;</td>
                     <td style="width: 65px" align="left">
                         <asp:Label ID="Label4" runat="server" Font-Bold="True" Font-Size="11pt" 
                             ForeColor="White" Text="Date To"></asp:Label>
                     </td>
                     <td>
-                        <asp:TextBox ID="txtToDate" runat="server"  style="width: 140px;"></asp:TextBox>
+                        <asp:TextBox ID="txtToDate" runat="server" CssClass="text" style="width: 140px;"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>

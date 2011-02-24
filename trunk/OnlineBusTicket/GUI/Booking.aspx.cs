@@ -17,7 +17,7 @@ public partial class GUI_Booking : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if(!IsPostBack)
+        if (!IsPostBack)
         {
             LoadData();
         }
@@ -25,11 +25,12 @@ public partial class GUI_Booking : System.Web.UI.Page
 
     public void LoadData()
     {
-       string from = Request.QueryString["From"].ToString().Trim();
-       string to = Request.QueryString["To"].ToString().Trim();
-       string fromDate = Request.QueryString["FromDate"].ToString().Trim();
-       string toDate =Request.QueryString["toDate"].ToString().Trim();
-       GridView1.DataSource = BLLInfoBusRouter.getBusRouter(fromDate, toDate, from, to);
-       GridView1.DataBind();
+        string from = Request.QueryString["From"].ToString().Trim();
+        string to = Request.QueryString["To"].ToString().Trim();
+        Router router = BLLRouter.getIDrouter(from, to);
+        DateTime fromDate = DateTime.Parse(Request.QueryString["FromDate"].ToString().Trim());
+        DateTime toDate = DateTime.Parse(Request.QueryString["toDate"].ToString().Trim());
+        GridView1.DataSource = BLLListBus.getListBusCustomer(fromDate, toDate, router.RouterID, true);
+        GridView1.DataBind();
     }
 }
