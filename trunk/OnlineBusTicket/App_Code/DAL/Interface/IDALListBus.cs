@@ -18,11 +18,13 @@ namespace DAL
 {
     public interface IDALListBus
     {
-        int InsertListBus(ListBus listBus);
-        int UpdateListBus(ListBus listBus);
-        int DeleteListBus(int key);
-        ListBus[] getListBusByID(int id);
-        DataTable getAllListBus();
-        DataTable getAllListBusByStatus(Boolean status);
+        //int InsertListBus(ListBus listBus);
+        //int UpdateListBus(ListBus listBus);
+        //int DeleteListBus(int key);
+        //ListBus[] getListBusByID(int id);
+        ListBus[] getListBusCustomer(DateTime star, DateTime end,int routerID,Boolean status);
+        //DataTable getAllListBus();
+        //DataTable getAllListBusByStatus(Boolean status);
+        
     }
 }
