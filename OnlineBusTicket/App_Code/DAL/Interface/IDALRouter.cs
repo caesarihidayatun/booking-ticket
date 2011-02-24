@@ -21,6 +21,7 @@ namespace DAL
         int InsertRouter(Router router);
         int UpdateRouter(Router router);
         int DeleteRouter(int key);
+        Router[] getIDrouter(String startPlace, String destinationPlace);
         Router[] getRouterByID(int id);
         DataTable getAllRouter();
         DataTable getAllRouterByStatus(Boolean status);
