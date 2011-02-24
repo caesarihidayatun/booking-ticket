@@ -8,7 +8,7 @@ using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Xml.Linq;
 using System.Data.SqlClient;
-
+using DAL;
 /// <summary>
 /// Summary description for DALListBus
 /// </summary>
@@ -127,7 +127,26 @@ namespace DAL
                 throw ex;
             }
         }
-
+        public ListBus[] getListBusCustomer(DateTime start, DateTime end, int routerID, Boolean status)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "select * from ListBus where @start<=Departure and Departure<=@end and RouterID=@routerID  and Status=@status";
+                cmd.Parameters.AddWithValue("@start", start);
+                cmd.Parameters.AddWithValue("@end", end);
+                cmd.Parameters.AddWithValue("@routerID", routerID);
+                cmd.Parameters.AddWithValue("@status", status);      
+                String[] columnNames = { listBusID, routerID, busPlate, departure, arrival, price, status };
+                result = SelectCollection<ListBus>(columnNames, columnNames, cmd);
+                return DALBase.SelectCollection<ListBus>(columnNames, columnNames,cmd);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
     }
 }
