@@ -50,9 +50,11 @@
                                     <asp:ListItem Value="0">PromoteID (Increase)</asp:ListItem>
                                     <asp:ListItem Value="1">PromoteName (Increase)</asp:ListItem>
                                     <asp:ListItem Value="2">Discount (Increase)</asp:ListItem>
+                                    <asp:ListItem Value="6">Status (Decrease)</asp:ListItem>
                                     <asp:ListItem Value="3">PromoteID (Decrease)</asp:ListItem>
                                     <asp:ListItem Value="4">PromoteName (Decrease)</asp:ListItem>
                                     <asp:ListItem Value="5">Discount (Decrease)</asp:ListItem>
+                                    <asp:ListItem Value="7">Status (Increase)</asp:ListItem>
                                     
                 </asp:DropDownList>
                             </td>

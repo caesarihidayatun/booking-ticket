@@ -134,5 +134,23 @@ namespace DAL
             }
             return d;
         }
+
+        public static IDALListBus GetListBusDA()
+        {
+            IDALListBus d = null;
+            if (String.IsNullOrEmpty(dataAccessStringType))
+            {
+                throw (new NullReferenceException("DataAccessType in Web.config is null or empty"));
+            }
+            else
+            {
+                if (dataAccessStringType.Equals("SQLSERVER"))
+                {
+                    Type t = Type.GetType("DAL.DALListBus");
+                    d = (DALListBus)Activator.CreateInstance(t);
+                }
+            }
+            return d;
+        }
     }
 }

@@ -91,6 +91,10 @@ public partial class Administrator_PromoteList : System.Web.UI.Page
                 dv.Sort = "PromoteName DESC"; break;
             case 5:
                 dv.Sort = "Discount DESC"; break;
+            case 6:
+                dv.Sort = "Status DESC"; break;
+            case 7:
+                dv.Sort = "Status ASC"; break;
         }
         total.Text = dv.Count.ToString();
         gvPromoteList.DataSource = dv;
