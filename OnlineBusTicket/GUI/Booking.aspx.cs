@@ -33,4 +33,25 @@ public partial class GUI_Booking : System.Web.UI.Page
         GridView1.DataSource = BLLListBus.getListBusCustomer(fromDate, toDate, router.RouterID, true);
         GridView1.DataBind();
     }
+    protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        if (e.CommandName == "Select")
+        {
+            int index =  Convert.ToInt32(e.CommandArgument.ToString());
+            
+            GridViewRow row = GridView1.Rows[index];        
+            lbDeparture.Text = row.Cells[2].Text;
+            lbArrival.Text = row.Cells[3].Text;
+            lbPrice.Text = row.Cells[4].Text;
+            ListBus listbus = new ListBus();
+            listbus.ListBusID = row.Cells[0].Text;
+            listbus.BusPlate = row.Cells[1].Text;
+            listbus.Departure = row.Cells[2].Text;
+            listbus.Arrival = row.Cells[3].Text;
+            listbus.Price = row.Cells[4].Text;
+            ViewState["lisbus"] = listbus; 
+            MultiView1.ActiveViewIndex++;
+        }
+    }
+ 
 }
