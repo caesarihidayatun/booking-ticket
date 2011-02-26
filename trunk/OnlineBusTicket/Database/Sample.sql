@@ -114,8 +114,6 @@ CREATE TABLE Ticket(
 	PromoteID int NOT NULL,
 	CancelDate datetime,
 	TotalFees float,
-	TotalReal float NOT NULL,
-	Description ntext,
 	Status nvarchar(50),
 )
 GO
@@ -136,15 +134,6 @@ ADD CONSTRAINT fk_Ticket_ListBus
 FOREIGN KEY (ListBusID) REFERENCES ListBus(ListBusID)
 ON DELETE CASCADE
 ON UPDATE CASCADE
-GO
----------------------------------------------------------------------------------------------------------------------------
-CREATE TABLE CancelCharge(
-	CancelChargeNo int IDENTITY(1,1) PRIMARY KEY,
-	CancelChargeName nvarchar(50) NOT NULL,
-	PercentPrice int NOT NULL,
-	DateCancel int NOT NULL,
-	Status bit
-)
 GO
 --CREATE TABLE PLACE-------------------------------------------------------------------------------------------------------
 --Store place--
@@ -232,16 +221,11 @@ INSERT INTO Place VALUES ('Thanh Hoa')
 INSERT INTO Place VALUES ('Vinh Phuc')
 INSERT INTO Place VALUES ('Yen Bai')
 GO
---CancelCharge--
-INSERT INTO CancelCharge VALUES ('More than 2 day',0,2,'True')
-INSERT INTO CancelCharge VALUES ('More than 1 day',15,1,'True')
-INSERT INTO CancelCharge VALUES ('To day',30,0,'True')
-GO
 --Ticket
-INSERT INTO Ticket VALUES (dateadd(hh,-1,getdate()),1,1,12,2,NULL,60,60,NULL,'Pending')
-INSERT INTO Ticket VALUES (getdate(),1,1,15,3,NULL,60,42,'Discount 30%','Pending')
-INSERT INTO Ticket VALUES (dateadd(dd,-10,getdate()),3,2,5,2,NULL,95,95,NULL,'Completed')
-INSERT INTO Ticket VALUES (dateadd(dd,-1,getdate()),4,2,10,2,getdate(),75,-63.75,'Refunds to customers, except amount by 15% cancellation 1 day before departure.','Canceled')
+INSERT INTO Ticket VALUES (dateadd(dd,-3,getdate()),1,1,12,2,NULL,60,'Pending')
+INSERT INTO Ticket VALUES (dateadd(dd,-4,getdate()),1,1,15,3,NULL,60,'Pending')
+INSERT INTO Ticket VALUES (dateadd(dd,-10,getdate()),3,2,5,2,NULL,95,'Completed')
+INSERT INTO Ticket VALUES (dateadd(dd,-4,getdate()),4,2,10,2,getdate(),75,'Canceled')
 
 
 
