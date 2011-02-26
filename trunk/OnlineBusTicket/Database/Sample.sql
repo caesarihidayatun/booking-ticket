@@ -98,7 +98,7 @@ CREATE TABLE Account(
 	IdentifyCode nvarchar(50) NOT NULL,
 	FullName nvarchar(50),
 	Address nvarchar(MAX) NOT NULL,
-	Phone varchar(50),
+	Phone varchar(50) NOT NULL,
 	Email nvarchar(50) NOT NULL,
 	Status bit
 )
@@ -112,8 +112,11 @@ CREATE TABLE Ticket(
 	AccountID int NOT NULL,
 	NumberSeat int NOT NULL,
 	PromoteID int NOT NULL,
-	TotalFees int,
-	Status int
+	CancelDate datetime,
+	TotalFees float,
+	TotalReal float NOT NULL,
+	Description ntext,
+	Status nvarchar(50),
 )
 GO
 ALTER TABLE Ticket
@@ -193,12 +196,12 @@ INSERT INTO Router VALUES ('Hai Phong - Thai Nguyen','Hai Phong','Thai Nguyen','
 INSERT INTO Router VALUES ('Hai Phong - Nam Dinh','Hai Phong','Nam Dinh','75','Interprovincial','True')
 GO
 --LISTBUS--
-INSERT INTO ListBus VALUES ('1','30B - 4557',dateadd(mi,30,getdate()),dateadd(hh,2,getdate()),'60','True')
-INSERT INTO ListBus VALUES ('2','30H - 4444',dateadd(hh,1,getdate()),dateadd(hh,5,getdate()),'100','True')
-INSERT INTO ListBus VALUES ('3','30L - 3144',dateadd(hh,2,getdate()),dateadd(hh,10,getdate()),'95','True')
-INSERT INTO ListBus VALUES ('4','30L - 3145',dateadd(mi,20,getdate()),dateadd(hh,3,getdate()),'75','True')
-INSERT INTO ListBus VALUES ('5','16H - 1102',dateadd(mi,50,getdate()),dateadd(hh,4,getdate()),'150','True')
-INSERT INTO ListBus VALUES ('6','16M - 9999',dateadd(hh,3,getdate()),dateadd(hh,8,getdate()),'55','True')
+INSERT INTO ListBus VALUES ('1','30B - 4557',dateadd(dd,-2,getdate()),dateadd(hh,1,getdate()),'60','True')
+INSERT INTO ListBus VALUES ('2','30H - 4444',dateadd(dd,-1,getdate()),dateadd(hh,2,getdate()),'100','True')
+INSERT INTO ListBus VALUES ('3','30L - 3144',dateadd(dd,-3,getdate()),dateadd(hh,2,getdate()),'95','True')
+INSERT INTO ListBus VALUES ('4','30L - 3145',dateadd(dd,-2,getdate()),dateadd(hh,1,getdate()),'75','True')
+INSERT INTO ListBus VALUES ('5','16H - 1102',dateadd(dd,-1,getdate()),dateadd(hh,3,getdate()),'150','True')
+INSERT INTO ListBus VALUES ('6','16M - 9999',dateadd(dd,-5,getdate()),dateadd(hh,4,getdate()),'55','True')
 GO
 --PROMOTE--
 INSERT INTO Promote VALUES ('Under five old','100','True')
@@ -232,8 +235,13 @@ GO
 --CancelCharge--
 INSERT INTO CancelCharge VALUES ('More than 2 day',0,2,'True')
 INSERT INTO CancelCharge VALUES ('More than 1 day',15,1,'True')
-INSERT INTO CancelCharge VALUES ('More than 2 day',30,0,'True')
-
+INSERT INTO CancelCharge VALUES ('To day',30,0,'True')
+GO
+--Ticket
+INSERT INTO Ticket VALUES (dateadd(hh,-1,getdate()),1,1,12,2,NULL,60,60,NULL,'Pending')
+INSERT INTO Ticket VALUES (getdate(),1,1,15,3,NULL,60,42,'Discount 30%','Pending')
+INSERT INTO Ticket VALUES (dateadd(dd,-10,getdate()),3,2,5,2,NULL,95,95,NULL,'Completed')
+INSERT INTO Ticket VALUES (dateadd(dd,-1,getdate()),4,2,10,2,getdate(),75,-63.75,'Refunds to customers, except amount by 15% cancellation 1 day before departure.','Canceled')
 
 
 
