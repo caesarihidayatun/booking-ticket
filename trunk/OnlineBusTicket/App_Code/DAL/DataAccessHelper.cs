@@ -26,7 +26,23 @@ namespace DAL
             }
             return d;
         }
-
+        public static IDALAccount GetAccountDA()
+        {
+            IDALAccount d = null;
+            if (String.IsNullOrEmpty(dataAccessStringType))
+            {
+                throw (new NullReferenceException("DataAccessType in Web.config is null or empty"));
+            }
+            else
+            {
+                if (dataAccessStringType.Equals("SQLSERVER"))
+                {
+                    Type t = Type.GetType("DAL.DALAccount");
+                    d = (IDALAccount)Activator.CreateInstance(t);
+                }
+            }
+            return d;
+        }
         public static IDALBusType GetBusTypeDA()
         {
             IDALBusType d = null;
@@ -169,6 +185,7 @@ namespace DAL
             }
             return d;
         }
+
         public static IDALListBus GetListBusCustomerDA()
         {
             IDALListBus d = null;
@@ -199,6 +216,23 @@ namespace DAL
                 {
                     Type t = Type.GetType("DAL.DALNews");
                     d = (IDALNews)Activator.CreateInstance(t);
+                }
+            }
+            return d;
+        }
+        public static IDALTicket GetTicketDA()
+        {
+            IDALTicket d = null;
+            if (String.IsNullOrEmpty(dataAccessStringType))
+            {
+                throw (new NullReferenceException("DataAccessType in Web.config is null or empty"));
+            }
+            else
+            {
+                if (dataAccessStringType.Equals("SQLSERVER"))
+                {
+                    Type t = Type.GetType("DAL.DALTicket");
+                    d = (IDALTicket)Activator.CreateInstance(t);
                 }
             }
             return d;
