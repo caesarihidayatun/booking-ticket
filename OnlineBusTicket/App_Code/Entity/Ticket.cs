@@ -71,20 +71,16 @@ public class Ticket
         get { return cancelDate; }
         set { cancelDate = value; }
     }
-    private string description;
 
-    public string Description
-    {
-        get { return description; }
-        set { description = value; }
-    }
-    private double totalReal;
+    private double totalFare;
 
-    public double TotalReal
+    public double TotalFare
     {
-        get { return totalReal; }
-        set { totalReal = value; }
+        get { return totalFare; }
+        set { totalFare = value; }
     }
+
+
     private string status;
 
     public string Status
