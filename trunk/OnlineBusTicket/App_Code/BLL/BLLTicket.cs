@@ -40,39 +40,50 @@ namespace BLL
             return result;
         }
 
-        public static int UpdateTicket(Ticket ticket)
-        {
-            int result = 0;
-            try
-            {
-                result = DataAccessHelper.GetTicketDA().UpdateTicket(ticket);
-            }
-            catch (Exception ex)
-            {
-                throw ex; 
-            }
-            return result;
-        }
+        //public static int UpdateTicket(Ticket ticket)
+        //{
+        //    int result = 0;
+        //    try
+        //    {
+        //        result = DataAccessHelper.GetTicketDA().UpdateTicket(ticket);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex; 
+        //    }
+        //    return result;
+        //}
 
-        public static int DeleteTicket(int id)
-        {
-            int result = 0;
-            try
-            {
-                result = DataAccessHelper.GetTicketDA().DeleteTicket(id);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            return result;
-        }
+        //public static int DeleteTicket(int id)
+        //{
+        //    int result = 0;
+        //    try
+        //    {
+        //        result = DataAccessHelper.GetTicketDA().DeleteTicket(id);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //    return result;
+        //}
 
-        public static Ticket[] getTicketByID(int id)
+        //public static Ticket[] getTicketByID(int id)
+        //{
+        //    try
+        //    {
+        //        return DataAccessHelper.GetTicketDA().getTicketByID(id);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //}
+        public static Ticket[] getTicketByListBusID(int listbusID)
         {
             try
             {
-                return DataAccessHelper.GetTicketDA().getTicketByID(id);
+                return DataAccessHelper.GetTicketDA().getTicketByListBusID(listbusID);
             }
             catch (Exception ex)
             {
@@ -91,18 +102,19 @@ namespace BLL
         //        throw ex;
         //    }
         //}
+        
 
-        public static DataTable getAllTicket()
-        {
-            try
-            {
-                return DataAccessHelper.GetTicketDA().getAllTicket();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
+        //public static DataTable getAllTicket()
+        //{
+        //    try
+        //    {
+        //        return DataAccessHelper.GetTicketDA().getAllTicket();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //}
 
         //public static int checkTicketNameExist(String name)
         //{

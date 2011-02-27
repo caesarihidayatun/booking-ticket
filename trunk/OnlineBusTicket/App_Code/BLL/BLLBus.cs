@@ -68,16 +68,18 @@ namespace BLL
             return result;
         }
 
-        public static Bus[] getBusByID(String id)
+        public static Bus getBusByID(String id)
         {
+            Bus[] result = null;
             try
             {
-                return DataAccessHelper.GetBusDA().getBusByID(id);
+                result = DataAccessHelper.GetBusDA().getBusByID(id);
             }
             catch (Exception ex)
             {
                 throw ex;
             }
+            return result[0];
         }
 
         public static DataTable getAllBusByStatus(Boolean status)
