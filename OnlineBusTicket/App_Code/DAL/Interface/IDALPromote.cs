@@ -21,7 +21,7 @@ namespace DAL
         int InsertPromote(Promote promote);
         int UpdatePromote(Promote promote);
         int DeletePromote(int id);
-        Promote[] getPromoteByID(int id);
+        Promote getPromoteByID(int id);
         DataTable getAllPromote();
         DataTable getAllPromoteByStatus(Boolean status);
         int checkPromoteExistName(String name);
