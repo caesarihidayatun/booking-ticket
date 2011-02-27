@@ -22,6 +22,8 @@ namespace DAL
         int UpdateTicket(Ticket ticket);
         int DeleteTicket(int key);
         Ticket[] getTicketByID(int id);
+        Ticket[] getTicketByListBusID(int lisbusID);
         DataTable getAllTicket();
+
     }
 }
