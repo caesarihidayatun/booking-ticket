@@ -27,8 +27,7 @@ namespace DAL
         private const string promoteID = "PromoteID";
         private const string cancelDate = "CancelDate";
         private const string totalFees = "TotalFees";
-        private const string description = "Description";
-        private const string totalReal = "TotalReal";
+        private const string totalFare = "TotalFare";
         private const string status = "Status";
 
         public DALTicket()
@@ -42,8 +41,8 @@ namespace DAL
             int result = 0;
             try
             {
-                String[] columns = { dateBooking, listBusID, accountID, numberSeat, promoteID, cancelDate, totalFees, totalReal, description, status };
-                Object[] values = {ticket.DateBooking, ticket.ListBusID, ticket.AccountID, ticket.NumberSeat, ticket.PromoteID, ticket.CancelDate, ticket.TotalFees, ticket.TotalReal, ticket.Description, ticket.Status};
+                String[] columns = { dateBooking, listBusID, accountID, numberSeat, promoteID, cancelDate, totalFees, totalFare, status };
+                Object[] values = {ticket.DateBooking, ticket.ListBusID, ticket.AccountID, ticket.NumberSeat, ticket.PromoteID, ticket.CancelDate, ticket.TotalFees,ticket.TotalFare, ticket.Status};
                 result = DALBase.InsertTable(tableName, columns, values) ;
             }
             catch (Exception ex)
@@ -75,9 +74,9 @@ namespace DAL
             int result = 0;
             try
             {
-                String[] columnNames = { dateBooking, listBusID, accountID, numberSeat, promoteID, cancelDate, totalFees, totalReal, description, status };
-                Object[] values = { ticket.DateBooking, ticket.ListBusID, ticket.AccountID, ticket.NumberSeat, ticket.PromoteID, ticket.CancelDate, ticket.TotalFees, ticket.TotalReal, ticket.Description, ticket.Status };
-                String[] keyColumnNames = {ticketNo};
+                String[] columnNames = { dateBooking, listBusID, accountID, numberSeat, promoteID, cancelDate, totalFees, totalFare, status };
+                Object[] values = { ticket.DateBooking, ticket.ListBusID, ticket.AccountID, ticket.NumberSeat, ticket.PromoteID, ticket.CancelDate, ticket.TotalFees, ticket.TotalFare, ticket.Status };
+                String[] keyColumnNames = { ticketNo };
                 Object[] keyColumnValues = {ticket.TicketNo};
                 result = DALBase.UpdateTable(tableName, columnNames, values, keyColumnNames, keyColumnValues);
             }
@@ -97,7 +96,27 @@ namespace DAL
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = String.Format("Select * from Ticket where {0} = @{1}", ticketNo, ticketNo);
                 cmd.Parameters.Add(String.Format("@{0}", ticketNo), SqlDbType.Int).Value = id;
-                String[] columnNames = { ticketNo, dateBooking, listBusID, accountID, numberSeat, promoteID, cancelDate, totalFees, totalReal, description, status };
+                String[] columnNames = { dateBooking, listBusID, accountID, numberSeat, promoteID, cancelDate, totalFees, totalFare, status };
+                result = SelectCollection<Ticket>(columnNames, columnNames, cmd);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return result;
+        }
+        public Ticket[] getTicketByListBusID(int listbusID)
+        {
+            Ticket[] result = null;
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "Select * from Ticket where ListBusID=@listBusID and Status = @canceled";
+                cmd.Parameters.AddWithValue("@listBusID", listbusID);
+                cmd.Parameters.AddWithValue("@canceled", "Canceled");
+                String[] columnNames = { dateBooking, listBusID, accountID, numberSeat, promoteID, cancelDate, totalFees, totalFare, status };
                 result = SelectCollection<Ticket>(columnNames, columnNames, cmd);
 
             }

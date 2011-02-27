@@ -80,7 +80,7 @@ namespace DAL
             return result;
         }
 
-        public Promote[] getPromoteByID(int id)
+        public Promote getPromoteByID(int id)
         {
             Promote[] result = null;
             try
@@ -97,7 +97,7 @@ namespace DAL
             {
                 throw ex;
             }
-            return result;
+            return result[0];
         }
 
         public DataTable getAllPromote()
