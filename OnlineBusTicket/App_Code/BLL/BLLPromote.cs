@@ -68,7 +68,7 @@ namespace BLL
             return result;
         }
 
-        public static Promote[] getPromoteByID(int id)
+        public static Promote getPromoteByID(int id)
         {
             try
             {

@@ -40,80 +40,80 @@ namespace BLL
             return result;
         }
 
-        public static int UpdateAccount(Account account)
-        {
-            int result = 0;
-            try
-            {
-                result = DataAccessHelper.GetAccountDA().UpdateAccount(account);
-            }
-            catch (Exception ex)
-            {
-                throw ex; 
-            }
-            return result;
-        }
+        //public static int UpdateAccount(Account account)
+        //{
+        //    int result = 0;
+        //    try
+        //    {
+        //        result = DataAccessHelper.GetAccountDA().UpdateAccount(account);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex; 
+        //    }
+        //    return result;
+        //}
 
-        public static int DeleteAccount(int id)
-        {
-            int result = 0;
-            try
-            {
-                result = DataAccessHelper.GetAccountDA().DeleteAccount(id);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            return result;
-        }
+        //public static int DeleteAccount(int id)
+        //{
+        //    int result = 0;
+        //    try
+        //    {
+        //        result = DataAccessHelper.GetAccountDA().DeleteAccount(id);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //    return result;
+        //}
 
-        public static Account[] getAccountByID(int id)
-        {
-            try
-            {
-                return DataAccessHelper.GetAccountDA().getAccountByID(id);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
+        //public static Account[] getAccountByID(int id)
+        //{
+        //    try
+        //    {
+        //        return DataAccessHelper.GetAccountDA().getAccountByID(id);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //}
 
-        public static DataTable getAllAccountByStatus(Boolean status)
-        {
-            try
-            {
-                return DataAccessHelper.GetAccountDA().getAllAccountByStatus(status);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
+        //public static DataTable getAllAccountByStatus(Boolean status)
+        //{
+        //    try
+        //    {
+        //        return DataAccessHelper.GetAccountDA().getAllAccountByStatus(status);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //}
 
-        public static DataTable getAllAccount()
-        {
-            try
-            {
-                return DataAccessHelper.GetAccountDA().getAllAccount();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
+        //public static DataTable getAllAccount()
+        //{
+        //    try
+        //    {
+        //        return DataAccessHelper.GetAccountDA().getAllAccount();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //}
 
-        public static int checkAccountNameExist(String name)
-        {
-            try
-            {
-                return DataAccessHelper.GetAccountDA().checkAccountNameExist(name);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
+        //public static int checkAccountNameExist(String name)
+        //{
+        //    try
+        //    {
+        //        return DataAccessHelper.GetAccountDA().checkAccountNameExist(name);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //}
     }
 }
